@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @recipe.name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @recipe.user_id %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @recipe.level_id %>
+</p>
+
+<p>
+  <strong>Active time:</strong>
+  <%= @recipe.active_time %>
+</p>
+
+<p>
+  <strong>Inactive time:</strong>
+  <%= @recipe.inactive_time %>
+</p>
+
+<p>
+  <strong>Vegetarian:</strong>
+  <%= @recipe.vegetarian %>
+</p>
+
+<p>
+  <strong>Vegan:</strong>
+  <%= @recipe.vegan %>
+</p>
+
+<p>
+  <strong>Lactose free:</strong>
+  <%= @recipe.lactose_free %>
+</p>
+
+<p>
+  <strong>Gluten free:</strong>
+  <%= @recipe.gluten_free %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @recipe.description %>
+</p>
+
+<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<%= link_to 'Back', recipes_path %>
