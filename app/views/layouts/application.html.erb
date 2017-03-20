@@ -6,9 +6,23 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<%= render 'layouts/navigation_links' %>
+<body>
+  <div class="navibar" >
+    <%= link_to 'categories', categories_path %>
+    <%= link_to 'recipes', recipes_path %>
+
+    <% if current_user %>
+        <%= current_user.username %> signed in
+      <%= link_to 'sign out', signout_path %>
+    <% else %>
+        <%= link_to 'sign in', signin_path %>
+        <%= link_to 'sign up', new_user_path %>
+    <% end %>
+
+  </div>
+
+
 <%= yield %>
 
 </body>
