@@ -14,6 +14,3 @@ Category.create([{ name: 'pasta', description: 'Pasta is from Italy and its real
 User.create([{ username: 'uha'}, {password: 'uha'}, {password_confirmation: 'uha'}, {description: 'Not really into cooking but likes good food'}])
 User.create([{ username: 'peter'}, {password: 'peter'}, {password_confirmation: 'peter'}, {description: 'Likes to experiment, needs to eat more!'}])
 
-Level.create([{ name: 'easy'}])
-Level.create([{ name: 'mediocre'}])
-Level.create([{ name: 'hard'}])

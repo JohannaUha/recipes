@@ -20,8 +20,8 @@
     <%= f.number_field :user_id %>
   </div>
   <div class="field">
-    <%= f.label :level_id %><br>
-    <%= f.number_field :level_id, options_from_collection_for_select(@levels, :id, :name) %>
+    <%= f.label :level %><br>
+    <%= f.select :level_id, options_from_collection_for_select(@levels, :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :active_time %><br>
