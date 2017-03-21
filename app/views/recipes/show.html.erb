@@ -1,48 +1,35 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @recipe.name %>
+  <h1><%= @recipe.name %></h1>
+
+  <i> Level: <%= (Level.find @recipe.level_id).name %></i>
+
+    <% if @recipe.vegetarian? %>
+        <strong>V</strong>
+    <% end %>
+    <% if @recipe.vegan? %>
+        <strong>VEGAN</strong>
+    <% end %>
+    <% if @recipe.lactose_free? %>
+        <strong>L</strong>
+    <% end %>
+    <% if @recipe.gluten_free? %>
+        <strong>G</strong>
+    <% end %>
+
+</p>
+
+<p>
+
+
+  <strong>Active time: <%= @recipe.active_time %> mins</strong>
+  <strong>Inactive time: <%= @recipe.active_time %> mins</strong>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @recipe.user_id %>
-</p>
-
-<p>
-  <strong>Level:</strong>
-  <%= @recipe.level_id %>
-</p>
-
-<p>
-  <strong>Active time:</strong>
-  <%= @recipe.active_time %>
-</p>
-
-<p>
-  <strong>Inactive time:</strong>
-  <%= @recipe.inactive_time %>
-</p>
-
-<p>
-  <strong>Vegetarian:</strong>
-  <%= @recipe.vegetarian %>
-</p>
-
-<p>
-  <strong>Vegan:</strong>
-  <%= @recipe.vegan %>
-</p>
-
-<p>
-  <strong>Lactose free:</strong>
-  <%= @recipe.lactose_free %>
-</p>
-
-<p>
-  <strong>Gluten free:</strong>
-  <%= @recipe.gluten_free %>
+  <%= (User.find @recipe.user_id).username %>
 </p>
 
 <p>

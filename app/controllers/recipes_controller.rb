@@ -25,16 +25,17 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = Recipe.create params.require(:recipe).permit(:name, :level_id, :active_time, :inactive_time, :vegetarian, :vegan, :lactose_free, :gluten_free, :description)
 
-    respond_to do |format|
-      if @recipe.save
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
-        format.json { render :show, status: :created, location: @recipe }
-      else
-        format.html { render :new }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
+    if current_user.nil?
+      redirect_to signin_path, notice:'You should be signed in'
+    elsif @recipe.save
+      current_user.recipes << @recipe
+      @recipe.user_id = current_user.id
+      redirect_to recipe_path @recipe, notice: 'Recipe was succesfully created.'
+    else
+      @recipes = Recipe.all
+      render :new
     end
   end
 
