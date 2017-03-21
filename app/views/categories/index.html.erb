@@ -15,7 +15,7 @@
     <% @categories.each do |category| %>
       <tr>
         <td><%= link_to category.name, recipes_path %></td>
-        <td><%= Recipe.count %></td>
+        <td><%= category.number_of_recipes %></td>
         <td><%= link_to 'Edit', edit_category_path(category) %></td>
         <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
