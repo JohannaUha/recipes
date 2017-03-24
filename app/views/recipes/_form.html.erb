@@ -1,4 +1,4 @@
-<%= form_for(@recipe) do |f| %>
+<%= form_for(setup_recipe(@recipe)) do |f| %>
   <% if @recipe.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
@@ -44,6 +44,26 @@
     <%= f.label :gluten_free %><br>
     <%= f.check_box :gluten_free %>
   </div>
+
+    <%= f.fields_for :ingredients do |ff| %>
+        <table>
+          <thead>
+            <tr>
+              <th><%= ff.label :amount %></th>
+              <th><%= ff.label :unit %></th>
+              <th><%= ff.label :name %></th>
+            </tr>
+          </thead>
+          <body>
+            <tr>
+              <td><%= ff.number_field :amount %></td>
+              <td><%= ff.text_area :unit %></td>
+              <td><%= ff.text_area :name %></td>
+            </tr>
+          </body>
+        </table>
+    <% end %>
+
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>

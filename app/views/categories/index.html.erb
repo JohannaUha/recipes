@@ -3,19 +3,12 @@
 <h1>Listing Categories</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
   <tbody>
     <% @categories.each do |category| %>
       <tr>
-        <td><%= link_to category.name, recipes_path %></td>
-        <td><%= category.number_of_recipes %></td>
+        <td><%= link_to category.name, category %></td>
+        <td><i><%= category.number_of_recipes %> recipes</i></td>
         <td><%= link_to 'Edit', edit_category_path(category) %></td>
         <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

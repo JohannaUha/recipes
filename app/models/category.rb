@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  has_many :recipes, through: :recipe_categories
+  has_many :recipes
 
   def number_of_recipes
     (Recipe.where category_id:id).size
