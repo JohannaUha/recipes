@@ -1,6 +1,6 @@
 module FormHelper
   def setup_recipe(recipe)
-    recipe.ingredients ||= Ingredient.new
+    7.times { recipe.ingredients.build }
     recipe
   end
 end

@@ -10,5 +10,36 @@
   <%= @user.description %>
 </p>
 
+<% if @user.recipes %>
+  <table>
+    <thead>
+      <tr>
+        <td><strong>Recipes by <%= @user.username %></strong></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.recipes.each do |r| %>
+        <tr>
+          <td><%= link_to r.name, r %> </td>
+          <td><% if r.vegetarian? %>
+                <strong>V</strong>
+            <% end %>
+            <% if r.vegan? %>
+                <strong>VEGAN</strong>
+            <% end %>
+            <% if r.lactose_free? %>
+                <strong>L</strong>
+            <% end %>
+            <% if r.gluten_free? %>
+                <strong>G</strong>
+            <% end %></td>
+          <td><%= r.level.name %></td>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

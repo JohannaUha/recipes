@@ -28,6 +28,7 @@ class IngredientsController < ApplicationController
 
     respond_to do |format|
       if @ingredient.save
+        byebug
         format.html { redirect_to @ingredient, notice: 'Ingredient was successfully created.' }
         format.json { render :show, status: :created, location: @ingredient }
       else

@@ -3,7 +3,7 @@
 <p>
   <h1><%= @recipe.name %></h1>
 
-  <i> Level: <%= (Level.find @recipe.level_id).name %></i>
+  By <%= link_to (User.find @recipe.user_id).username, User.find(@recipe.user_id) %>
 
     <% if @recipe.vegetarian? %>
         <strong>V</strong>
@@ -17,23 +17,22 @@
     <% if @recipe.gluten_free? %>
         <strong>G</strong>
     <% end %>
-
 </p>
 
+<i> Level: <%= (Level.find @recipe.level_id).name %></i>
+
 <p>
-
-
   <strong>Active time: <%= @recipe.active_time %> mins</strong>
   <strong>Inactive time: <%= @recipe.active_time %> mins</strong>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= (User.find @recipe.user_id).username %>
+  <% @recipe.ingredients.each do |ingredient| %>
+    <ul><%= ingredient.printtaa %></ul>
+  <% end %>
 </p>
 
 <p>
-  <strong>Description:</strong>
   <%= @recipe.description %>
 </p>
 
