@@ -25,7 +25,7 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
-    @recipe = Recipe.create params.require(:recipe).permit(:name, :level_id, :active_time, :inactive_time, :vegetarian, :vegan, :lactose_free, :gluten_free, :description)
+    @recipe = Recipe.create params.require(:recipe).permit(:name, :level_id, :active_time, :inactive_time, :vegetarian, :vegan, :lactose_free, :gluten_free, :description, ingredients_attributes: [:id, :amount, :unit, :name, :_destroy])
 
     if current_user.nil?
       redirect_to signin_path, notice:'You should be signed in'
@@ -71,6 +71,6 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:name, :user_id, :level_id, :active_time, :inactive_time, :vegetarian, :vegan, :lactose_free, :gluten_free, :description, ingredients_attributes: [:id, :amount, :unit, :name])
+      params.require(:recipe).permit(:name, :user_id, :level_id, :active_time, :inactive_time, :vegetarian, :vegan, :lactose_free, :gluten_free, :description, ingredients_attributes: [:id, :amount, :unit, :name, :_destroy])
     end
 end

@@ -47,8 +47,8 @@
 
   <h3>Ingredients</h3>
     <div id="ingredients">
-      <%= f.fields_for :ingredients do |ff| %>
-        <%= render 'ingredients_fields', :f => ff %>
+      <%= f.fields_for :ingredients do |ingredient| %>
+        <%= render 'ingredient_fields', :f => ingredient %>
       <% end %>
       <div class="links">
         <%= link_to_add_association 'add ingredient', f, :ingredients %>
@@ -60,6 +60,6 @@
     <%= f.text_area :description %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Save' %>
   </div>
 <% end %>
