@@ -45,26 +45,15 @@
     <%= f.check_box :gluten_free %>
   </div>
 
-  <div>
-    <%= f.fields_for :ingredients do |ff| %>
-        <table>
-          <thead>
-            <tr>
-              <th><%= ff.label :amount %></th>
-              <th><%= ff.label :unit %></th>
-              <th><%= ff.label :name %></th>
-            </tr>
-          </thead>
-          <body>
-            <tr>
-              <td><%= ff.number_field :amount %></td>
-              <td><%= ff.text_field :unit %></td>
-              <td><%= ff.text_field :name %></td>
-            </tr>
-          </body>
-        </table>
-    <% end %>
-  </div>
+  <h3>Ingredients</h3>
+    <div id="ingredients">
+      <%= f.fields_for :ingredients do |ff| %>
+        <%= render 'ingredients_fields', :f => ff %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association 'add ingredient', f, :ingredients %>
+      </div>
+    </div>s
 
   <div class="field">
     <%= f.label :description %><br>
