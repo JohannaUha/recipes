@@ -16,6 +16,7 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @levels = Level.all
+    @categories = Category.all
   end
 
   # GET /recipes/1/edit
@@ -25,6 +26,7 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
+
     @recipe = Recipe.create params.require(:recipe).permit(:name, :level_id, :active_time, :inactive_time, :vegetarian, :vegan, :lactose_free, :gluten_free, :description, ingredients_attributes: [:id, :amount, :unit, :name, :_destroy])
 
     if current_user.nil?

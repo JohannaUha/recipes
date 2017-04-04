@@ -12,54 +12,73 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <h2><%= f.label :name %>
+    <%= f.text_field :name %></h2>
   </div>
 
   <div class="field">
-    <%= f.label :level %><br>
+    <%= f.label :category %>
+    <%= f.select :category_id, options_from_collection_for_select(@categories, :id, :name) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :level %>
     <%= f.select :level_id, options_from_collection_for_select(@levels, :id, :name) %>
   </div>
-  <div class="field">
-    <%= f.label :active_time %><br>
-    <%= f.number_field :active_time %>
-  </div>
-  <div class="field">
-    <%= f.label :inactive_time %><br>
-    <%= f.number_field :inactive_time %>
-  </div>
-  <div class="field">
-    <%= f.label :vegetarian %><br>
-    <%= f.check_box :vegetarian %>
-  </div>
-  <div class="field">
-    <%= f.label :vegan %><br>
-    <%= f.check_box :vegan %>
-  </div>
-  <div class="field">
-    <%= f.label :lactose_free %><br>
-    <%= f.check_box :lactose_free %>
-  </div>
-  <div class="field">
-    <%= f.label :gluten_free %><br>
-    <%= f.check_box :gluten_free %>
-  </div>
 
-  <h3>Ingredients</h3>
+  <p>
+    <div class="field">
+      <%= f.label :active_time %><br>
+      <%= f.number_field :active_time %>
+    </div>
+    <div class="field">
+      <%= f.label :inactive_time %><br>
+      <%= f.number_field :inactive_time %>
+    </div>
+  </p>
+
+  <p>
+    <div class="field">
+      <%= f.check_box :vegetarian %>
+      <%= f.label :vegetarian %>
+    </div>
+    <div class="field">
+      <%= f.check_box :vegan %>
+      <%= f.label :vegan %>
+    </div>
+    <div class="field">
+      <%= f.check_box :lactose_free %>
+      <%= f.label :lactose_free %>
+    </div>
+    <div class="field">
+      <%= f.check_box :gluten_free %>
+      <%= f.label :gluten_free %>
+    </div>
+  </p>
+
+  <p>
+    <h3>Ingredients</h3>
     <div id="ingredients">
       <%= f.fields_for :ingredients do |ingredient| %>
-        <%= render 'ingredient_fields', :f => ingredient %>
+          <%= render 'ingredient_fields', :f => ingredient %>
       <% end %>
       <div class="links">
-        <%= link_to_add_association 'add ingredient', f, :ingredients %>
+        <%= link_to_add_association '+', f, :ingredients %>
       </div>
-    </div>s
+    </div>
+  </p>
 
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'Save' %>
-  </div>
+  <p>
+    <div class="field">
+      <%= f.label :description %><br>
+      <%= f.text_area :description %>
+    </div>
+  </p>
+
+  <p>
+    <div class="actions">
+      <%= f.submit 'Save' %>
+    </div>
+  </p>
+
 <% end %>

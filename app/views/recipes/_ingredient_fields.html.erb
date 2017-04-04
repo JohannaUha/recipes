@@ -2,14 +2,14 @@
   <div class="field">
     <%= f.label :amount %>
     <%= f.number_field :amount %>
-  </div>
-  <div class="field">
+
     <%= f.label :unit %>
     <%= f.text_field :unit %>
-  </div>
-  <div class="field">
+
     <%= f.label :name %>
     <%= f.text_field :name %>
+
+    <%= link_to_remove_association "remove", f %>
   </div>
-  <%= link_to_remove_association "remove ingredient", f %>
+
 </div>
